@@ -47,7 +47,7 @@
                     <p class="card-title">Detailed Reports</p>
                     <div class="row">
                         <div class="col-md-12">
-                            <strong> Total Pemebelian  </strong> :  {{$totalPenjualan->total_penjualan}} unit 
+                            <strong> Total Penjualan  </strong> :  {{$totalPenjualan->total_penjualan}} unit 
                         </div>
                         <div class="col-md-12">
                             <strong> Total Pemasukan  </strong> : RP. {{$totalPenjualan->total_pemasukan}}  

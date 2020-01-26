@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-    <a href="{{route('harga.create.index')}}" class="btn btn-success btn-sm"> Tambahkan harga </a>
+    <a href="{{route('harga.create.index')}}" class="btn btn-success btn-sm"> Tambahkan Harga </a>
 
     <hr>
     
