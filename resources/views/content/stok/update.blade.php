@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Edit stok 
+    Edit Stok 
 @endsection
 @section('content')
     <form action=" {{route('stok.update', $stok->id)}} " method="POST">

@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Edit harga 
+    Edit Harga 
 @endsection
 @section('content')
     <form action=" {{route('harga.update', $harga->id)}} " method="POST">

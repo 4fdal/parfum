@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Tambahkan pelanggan
+    Tambahkan Pelanggan
 @endsection
 @section('content')
     
@@ -17,7 +17,7 @@
             <span class="text-danger">{{ $errors->first('nama') }}</span>
         </div>
         <div class="form-group {{ $errors->has('alamat') ? 'has-error' : '' }}">
-            <label for="labelinput">alamat</label>
+            <label for="labelinput">Alamat</label>
             <textarea name="alamat" class="form-control" >{{old('alamat')}}</textarea>
             <span class="text-danger">{{ $errors->first('alamat') }}</span>
         </div>

@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Tambahkan gambar
+    Tambahkan Gambar
 @endsection
 @section('content')
     

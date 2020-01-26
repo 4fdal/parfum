@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    List harga
+    List Harga
 @endsection
 @section('content')
 
@@ -15,7 +15,7 @@
                 <th>#</th>
                 <th>Jenis</th>
                 <th>Nama</th>
-                <th>harga</th>
+                <th>Harga</th>
                 <th>Action</th>
             </tr>
         </thead>

@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('title')
-    List pelanggan
+    List Pelanggan
 @endsection
 @section('content')
 
-    <a href="{{route('pelanggan.create.index')}}" class="btn btn-success btn-sm"> Tambahkan pelanggan </a>
+    <a href="{{route('pelanggan.create.index')}}" class="btn btn-success btn-sm"> Tambahkan Pelanggan </a>
 
     <hr>
     

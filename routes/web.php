@@ -71,19 +71,13 @@ Route::group(['prefix' => 'home'], function () {
 
     Route::group(['prefix' => 'total_pembelian'], function () {
         Route::get('/', 'TotalPembelianController@index')->name('total_pembelian.index');
-        // Route::get('/create', 'TotalPembelianController@createIndex')->name('total_pembelian.create.index');
-        // Route::get('/update/{id}', 'TotalPembelianController@updateIndex')->name('total_pembelian.update.index');
-        // Route::post('/', 'TotalPembelianController@create')->name('total_pembelian.create');
-        // Route::put('/{id}', 'TotalPembelianController@update')->name('total_pembelian.update');
-        // Route::delete('/{id}', 'TotalPembelianController@delete')->name('total_pembelian.delete');
     });
 
     Route::group(['prefix' => 'total_penjualan'], function () {
         Route::get('/', 'TotalPenjualanController@index')->name('total_penjualan.index');
-        // Route::get('/create', 'TotaoPenjualanController@createIndex')->name('total_penjualan.create.index');
-        // Route::get('/update/{id}', 'TotaoPenjualanController@updateIndex')->name('total_penjualan.update.index');
-        // Route::post('/', 'TotaoPenjualanController@create')->name('total_penjualan.create');
-        // Route::put('/{id}', 'TotaoPenjualanController@update')->name('total_penjualan.update');
-        // Route::delete('/{id}', 'TotaoPenjualanController@delete')->name('total_penjualan.delete');
+    });
+
+    Route::group(['prefix' => 'report'], function () {
+        Route::get('/', 'ReportController@index')->name('report.index');
     });
 });

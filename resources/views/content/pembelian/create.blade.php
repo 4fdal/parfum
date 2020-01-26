@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Tambahkan pembelian
+    Tambahkan Pembelian
 @endsection
 @section('content')
     
@@ -16,13 +16,13 @@
             <span class="text-danger">{{ $errors->first('jenis') }}</span>
         </div>
         <div class="form-group {{ $errors->has('jumlah') ? 'has-error' : '' }}">
-            <label for="labelinput">jumlah</label>
-            <input type="text" value="{{old('jumlah')}}" class="form-control" name="jumlah" placeholder="jumlah">
+            <label for="labelinput">Jumlah</label>
+            <input type="text" value="{{old('jumlah')}}" class="form-control" name="jumlah" placeholder="Jumlah">
             <span class="text-danger">{{ $errors->first('jumlah') }}</span>
         </div>
         <div class="form-group {{ $errors->has('harga') ? 'has-error' : '' }}">
-            <label for="labelinput">harga</label>
-            <input type="text" value="{{old('harga')}}" class="form-control" name="harga" placeholder="harga">
+            <label for="labelinput">Harga</label>
+            <input type="text" value="{{old('harga')}}" class="form-control" name="harga" placeholder="Harga">
             <span class="text-danger">{{ $errors->first('harga') }}</span>
         </div>
         <button class="btn btn-primary btn-sm" type="submit"> Simpan </button>

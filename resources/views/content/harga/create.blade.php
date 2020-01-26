@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Tambahkan harga
+    Tambahkan Harga
 @endsection
 @section('content')
     
@@ -21,8 +21,8 @@
             <span class="text-danger">{{ $errors->first('nama') }}</span>
         </div>
         <div class="form-group {{ $errors->has('harga') ? 'has-error' : '' }}">
-            <label for="labelinput">harga</label>
-            <input type="text" value="{{old('harga')}}" class="form-control" name="harga" placeholder="harga">
+            <label for="labelinput">Harga</label>
+            <input type="text" value="{{old('harga')}}" class="form-control" name="harga" placeholder="Harga">
             <span class="text-danger">{{ $errors->first('harga') }}</span>
         </div>
         <button class="btn btn-primary btn-sm" type="submit"> Simpan </button>

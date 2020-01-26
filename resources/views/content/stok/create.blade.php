@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Tambahkan stok
+    Tambahkan Stok
 @endsection
 @section('content')
     

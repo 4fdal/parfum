@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    List stok
+    List Stok
 @endsection
 @section('content')
 

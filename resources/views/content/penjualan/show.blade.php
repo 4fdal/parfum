@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    List penjualan
+    List Penjualan
 @endsection
 @section('content')
 

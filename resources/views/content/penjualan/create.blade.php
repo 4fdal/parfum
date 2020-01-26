@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    Tambahkan penjualan
+    Tambahkan Penjualan
 @endsection
 @section('content')
     
@@ -16,12 +16,12 @@
             <span class="text-danger">{{ $errors->first('harga') }}</span>
         </div>
         <div class="form-group {{ $errors->has('jumlah') ? 'has-error' : '' }}">
-            <label for="labelinput">jumlah</label>
-            <input type="text" value="{{old('jumlah')}}" class="form-control" name="jumlah" placeholder="jumlah">
+            <label for="labelinput">Jumlah</label>
+            <input type="text" value="{{old('jumlah')}}" class="form-control" name="jumlah" placeholder="Jumlah">
             <span class="text-danger">{{ $errors->first('jumlah') }}</span>
         </div>
         <div class="form-group {{ $errors->has('pelanggan') ? 'has-error' : '' }}">
-            <label for="labelinput">pelanggan</label>
+            <label for="labelinput">Pelanggan</label>
             <select name="kode_pelanggan" class="form-control" id=""> 
                 @foreach ($pelanggan as $item)
                     <option value=" {{$item->kode}} "> Kode : {{$item->kode}} | Nama Pelanggan :  {{$item->nama}} </option>

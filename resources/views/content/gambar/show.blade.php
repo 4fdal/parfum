@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('title')
-    List gambar
+    List Gamabar
 @endsection
 @section('content')
 
