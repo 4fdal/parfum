@@ -54,5 +54,11 @@
                 <span class="menu-title"> Total Penjualan </span>
             </a>
         </li>
+        {{-- <li class="nav-item">
+            <a class="nav-link" href="{{route('report.index')}}">
+                <i class="ti-layout-list-post menu-icon"></i>
+                <span class="menu-title"> Report </span>
+            </a>
+        </li> --}}
     </ul>
 </nav>

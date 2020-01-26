@@ -1,48 +1,61 @@
 @extends('welcome')
 @section('title')
-    List Jenis
+    List penjualan Total
 @endsection
 @section('content')
 
-    <a href="{{route('jenis.create.index')}}" class="btn btn-success btn-sm"> Tambahkan Jenis </a>
+    <a href="{{route('penjualan.create.index')}}" class="btn btn-success btn-sm"> Tambahkan penjualan </a>
 
     <hr>
     
     <div class="table-responsive">
-    <table class="table table-hover" id='table-data'>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nama</th>
-                <th>Keterangan</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no=1;?>
-            @foreach ($jenis as $item)
+        <table class="table table-hover" id='table-data'>
+            <thead>
                 <tr>
-                    <th> {{$no++}} </th>
-                    <th> {{$item->nama}} </th>
-                    <th> {{$item->keterangan}} </th>
-                    <th> 
-                        <a href="{{route('jenis.update.index',$item->id)}}" class="btn btn-info btn-sm"> Show / Edit </a>
-                        <a href="" class="btn btn-danger btn-sm" onclick="
-                            var cfm = confirm('Yakin Akan Menghapus ?');
-                            if(cfm){
-                            event.preventDefault();
-                            document.getElementById('{{$item->id}}').submit();
-                            }
-                        "> <i class="fa fa-times"></i> Delete</a>
-                        </div>
-                        <form id='{{$item->id}}' action="{{route('jenis.delete',$item->id)}}" style="display:none;" method="post">
-                        {{ csrf_field() }} {{method_field('DELETE')}}
-                        </form> 
-                    </th>
+                    <th>#</th>
+                    <th>Jenis</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                    <th>Pelanggan</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php $no=1;?>
+                @foreach ($penjualan as $item)
+                    <tr>
+                        <th> {{$no++}} </th>
+                        <th> {{$item->jenis->nama}} </th>
+                        <th> {{$item->harga->nama}} </th>
+                        <th> {{$item->harga->harga}} </th>
+                        <th> {{$item->jumlah}} </th>
+                        <th> {{$item->total}} </th>
+                        <th> 
+                            Kode Pelanggan : {{$item->pelanggan->kode}} <br/> 
+                            Nama Pelanggan : {{$item->pelanggan->nama}} 
+                        </th>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Detailed Reports</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong> Total Pemebelian  </strong> :  {{$totalPenjualan->total_penjualan}} unit 
+                        </div>
+                        <div class="col-md-12">
+                            <strong> Total Pemasukan  </strong> : RP. {{$totalPenjualan->total_pemasukan}}  
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     

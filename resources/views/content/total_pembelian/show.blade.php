@@ -1,54 +1,63 @@
 @extends('welcome')
 @section('title')
-    List Jenis
+    List Total pembelian
 @endsection
 @section('content')
 
-    <a href="{{route('jenis.create.index')}}" class="btn btn-success btn-sm"> Tambahkan Jenis </a>
+    <a href="{{route('pembelian.create.index')}}" class="btn btn-success btn-sm"> Tambahkan pembelian </a>
 
     <hr>
     
     <div class="table-responsive">
-    <table class="table table-hover" id='table-data'>
+    <table class="table table-hover" id='table-pembelian'>
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nama</th>
+                <th>Jenis</th>
                 <th>Keterangan</th>
-                <th>Action</th>
+                <th>Jumlah</th>
+                <th>Harga</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
             <?php $no=1;?>
-            @foreach ($jenis as $item)
+            @foreach ($pembelian as $item)
                 <tr>
                     <th> {{$no++}} </th>
-                    <th> {{$item->nama}} </th>
-                    <th> {{$item->keterangan}} </th>
-                    <th> 
-                        <a href="{{route('jenis.update.index',$item->id)}}" class="btn btn-info btn-sm"> Show / Edit </a>
-                        <a href="" class="btn btn-danger btn-sm" onclick="
-                            var cfm = confirm('Yakin Akan Menghapus ?');
-                            if(cfm){
-                            event.preventDefault();
-                            document.getElementById('{{$item->id}}').submit();
-                            }
-                        "> <i class="fa fa-times"></i> Delete</a>
-                        </div>
-                        <form id='{{$item->id}}' action="{{route('jenis.delete',$item->id)}}" style="display:none;" method="post">
-                        {{ csrf_field() }} {{method_field('DELETE')}}
-                        </form> 
-                    </th>
+                    <th> {{$item->jenis->nama}} </th>
+                    <th> {{$item->jenis->keterangan}} </th>
+                    <th> {{$item->jumlah}} </th>
+                    <th> {{$item->harga}} </th>
+                    <th> {{$item->total}} </th>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Detailed Reports</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong> Total Pemebelian  </strong> :  {{$totalPembelian->total_pembelian}} unit 
+                        </div>
+                        <div class="col-md-12">
+                            <strong> Total Pemngeluaran  </strong> : RP. {{$totalPembelian->total_pengeluaran}}  
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     
 @endsection
 @section('script')
     <script>
-        $("#table-data").DataTable();
+        $("#table-pembelian").DataTable();
     </script>
 @endsection
