@@ -13,7 +13,7 @@
                     <option value=" {{$item->id}} "> {{$item->nama}} </option>
                 @endforeach
             </select>
-            <span class="text-danger">{{ $errors->first('jenis') }}</span>
+            <span class="text-danger">{{ $errors->first('id_jenis') }}</span>
         </div>
         <div class="form-group {{ $errors->has('jumlah') ? 'has-error' : '' }}">
             <label for="labelinput">Jumlah</label>

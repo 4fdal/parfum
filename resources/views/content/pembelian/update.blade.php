@@ -9,11 +9,9 @@
         <div class="form-group {{ $errors->has('jenis') ? 'has-error' : '' }}">
             <label for="labelinput">Jenis</label>
             <select name="id_jenis" class="form-control" id=""> 
-                @foreach ($jenis as $item)
-                    <option {{ $pembelian->id == $item->id ? "selected" : "" }} value=" {{$item->id}} "> {{$item->nama}} </option>
-                @endforeach
+                <option value="{{$pembelian->id_jenis}}"> {{$pembelian->jenis->nama}} </option>
             </select>
-            <span class="text-danger">{{ $errors->first('jenis') }}</span>
+            <span class="text-danger">{{ $errors->first('id_jenis') }}</span>
         </div>
         <div class="form-group {{ $errors->has('jumlah') ? 'has-error' : '' }}">
             <label for="labelinput">Jumlah</label>

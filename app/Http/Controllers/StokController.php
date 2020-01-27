@@ -12,7 +12,7 @@ class StokController extends Controller
         $model = $model != null ? $model : $request ;
         return [
             'id_jenis' => $request->get('id_jenis', $model->id_jenis),
-            'nama' => $request->get('nama', $model->nama),
+            // 'nama' => $request->get('nama', $model->nama),
             'jumlah_stok' => $request->get('jumlah_stok', $model->jumlah_stok),
         ];
     }
@@ -32,16 +32,18 @@ class StokController extends Controller
     public function create(Request $request, Stok $stok){
         $this->validate($request, [
             'id_jenis' => ['required'],
-            'nama' => ['required'],
+            // 'nama' => ['required'],
             'jumlah_stok' => ['required', 'numeric']
         ]);
         $data = $this->myRequest($request) ;
+        $data['nama'] = Jenis::find($data['id_jenis'])->nama;
         $stok = $stok->create($data);
         return redirect()->route('stok.index')->withSuccess('Berhasil Menambahkan stok');
     }
     public function update(Request $request, Stok $stok, $id){
         $stok = $stok->find($id);
         $data = $this->myRequest($request, $stok);
+        $data['nama'] = Jenis::find($data['id_jenis'])->nama;
         $stok->update($data);
         return redirect()->route('stok.index')->withSuccess('Berhasil Edit stok');
     }

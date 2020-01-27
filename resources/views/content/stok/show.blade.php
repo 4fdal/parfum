@@ -13,8 +13,7 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Jenis</th>
-                <th>Nama</th>
+                <th>Nama Jenis</th>
                 <th>Jumlah Stok</th>
                 <th>Action</th>
             </tr>
@@ -24,7 +23,6 @@
             @foreach ($stok as $item)
                 <tr>
                     <th> {{$no++}} </th>
-                    <th> {{$item->jenis->nama}} </th>
                     <th> {{$item->nama}} </th>
                     <th> {{$item->jumlah_stok}} </th>
                     <th> 

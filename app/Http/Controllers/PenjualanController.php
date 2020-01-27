@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Stok;
 use App\Harga;
 use App\Jenis;
 use App\Pelanggan;
@@ -43,6 +44,21 @@ class PenjualanController extends Controller
         ]);
         $data = $this->myRequest($request) ;
         $harga = Harga::find($data['id_harga']);
+        // pengurangan stok 
+        $stok = Stok::where('id_jenis', $harga->jenis->id)->first();
+        if($stok == null){
+            return redirect()->back()->withDanger('Stok Tidak Ada');
+        } else {
+            $jumlah_stok = $stok->jumlah_stok - $data['jumlah'];
+            if ($jumlah_stok <= 0) {
+                return redirect()->back()->withDanger('Jumlah stok tidak mencukupi untuk pembelian');
+            } else {
+                $stok->update([
+                    'jumlah_stok' => $jumlah_stok
+                ]);
+            }  
+        }
+        // end
         $data['id_jenis'] = $harga->id_jenis ;
         $data['total'] = $data['jumlah'] * $harga->harga ;
         $penjualan = $penjualan->create($data);
@@ -52,13 +68,30 @@ class PenjualanController extends Controller
         $penjualan = $penjualan->find($id);
         $data = $this->myRequest($request, $penjualan);
         $harga = Harga::find($data['id_harga']);
+        // update pengurangan stok 
+        $stok = Stok::where('id_jenis', $harga->jenis->id)->first();
+        $jumlah_stok = $stok->jumlah_stok + $penjualan->jumlah;
+        $jumlah_stok = $jumlah_stok - $data['jumlah'];
+        if ($jumlah_stok <= 0) {
+            return redirect()->back()->withDanger('Jumlah stok tidak mencukupi untuk pembelian');
+        } else {
+            $stok->update([
+                'jumlah_stok' => $jumlah_stok
+            ]);
+        }   
+        // end
         $data['id_jenis'] = $harga->id_jenis;
         $data['total'] = $data['jumlah'] * $harga->harga;
         $penjualan->update($data);
         return redirect()->route('penjualan.index')->withSuccess('Berhasil Edit penjualan');
     }
     public function delete(Penjualan $penjualan, $id){
-        $penjualan->find($id)->delete();
+        $penjualan = $penjualan->find($id);
+        $stok = Stok::where('id_jenis', $penjualan->id_jenis)->first();
+        if($stok != null){
+            $jumlah_stok = $stok->jumlah_stok + $penjualan->jumlah;
+        }
+        $penjualan->delete();
         return redirect()->route('penjualan.index')->withSuccess('Berhasil Hapus penjualan');
     }
 }
